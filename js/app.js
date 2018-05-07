@@ -1,15 +1,37 @@
 function populate() {
-    // show questions
-    var element = document.getElementById("question");
-    element.innerHTML = quiz.getQuestionIndex().text;
+    if (quiz.isEnded()) {
+        showScores();
+    }
+    else {
+        // show questions
+        var element = document.getElementById("question");
+        element.innerHTML = quiz.getQuestionIndex().text;
 
-    // show options
-    var choices = quiz.getQuestionIndex().choices;
-    for(var i = 0; i < choices.length; i++) {
-        var element = document.getElementById("choice" + i);
-        element.innerHTML = choices[i];
+        // show options
+        var choices = quiz.getQuestionIndex().choices;
+        for (var i = 0; i < choices.length; i++) {
+            var element = document.getElementById("choice" + i);
+            element.innerHTML = choices[i];
+            guess("btn" + i, choices[i]);
+            // guess("btn" + i, choices[i]);
         }
+    }
+};
+
+function guess(id, guess) {
+    var button = document.getElementById(id);
+    button.onclick = function () {
+        quiz.guess(guess);
+        populate();
+    }
 }
+
+function showScores() {
+    var gameOverHTML = "<h1>Result</h1>";
+    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
+    var element = document.getElementById("quiz");
+    element.innerHTML = gameOverHTML;
+};
 
 // add questions to array
 var questions = [
