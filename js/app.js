@@ -1,3 +1,9 @@
+function populate() {
+    // // show questions
+        var element = document.getElementById("question");
+        element.innerHTML = quiz.getQuestionIndex().text;
+}
+
 // add questions to array
 var questions = [
     new Question("Which one is not an object oriented programming language?", ["Java", "C#", "C", "C++"], "C"),
@@ -7,3 +13,8 @@ var questions = [
     new Question("MVC is a ________.", ["Website", "Library", "Language", "Framework"], "Framework")
 ]
 
+// create object of the Quiz function in quizController.js
+var quiz = new Quiz(questions);
+
+// populate questions
+populate();
