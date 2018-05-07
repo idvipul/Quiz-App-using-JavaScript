@@ -9,12 +9,11 @@ Quiz.prototype.getQuestionIndex = function() {
 }
 
 Quiz.prototype.guess = function(answer) {
-    this.questionIndex++;
-
     if(this.getQuestionIndex().isCorrectAnswer(answer)) {
         this.score++;
     }
 
+    this.questionIndex++;
 }
 
 Quiz.prototype.isEnded = function() {
