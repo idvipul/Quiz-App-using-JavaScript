@@ -1,7 +1,14 @@
 function populate() {
-    // // show questions
-        var element = document.getElementById("question");
-        element.innerHTML = quiz.getQuestionIndex().text;
+    // show questions
+    var element = document.getElementById("question");
+    element.innerHTML = quiz.getQuestionIndex().text;
+
+    // show options
+    var choices = quiz.getQuestionIndex().choices;
+    for(var i = 0; i < choices.length; i++) {
+        var element = document.getElementById("choice" + i);
+        element.innerHTML = choices[i];
+        }
 }
 
 // add questions to array
